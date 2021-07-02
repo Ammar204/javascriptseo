@@ -1,6 +1,7 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import { FileUpload } from "../../component/fileUpload/FileUpload";
+// import { FileUploadClass } from "../../component/fileUpload/FileUploadClass";
 import { SearchPageFooter } from "../../component/searchPageFooter/SearchPageFooter";
 import SearchPageMenubar from "../../component/searchPageMenubar/SearchPageMenubar";
 import { useStyles } from "./style";

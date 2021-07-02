@@ -16,11 +16,16 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
       background: theme.palette.background.paper,
       padding: "5px",
       fontSize: "14px",
-      height: "18px",
+      height: "auto",
       borderRadius: 2,
-      width: "50%",
-      position:"relative"
-      
+      position:"relative",
+      wordBreak: "break-word",
+    },
+    uploadInput : {
+      flexGrow: 1,
+      maxWidth: "300px",
+      marginRight: "15px",
+      cursor: "pointer"
     }
 }))
 
