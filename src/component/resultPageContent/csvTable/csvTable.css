@@ -1,0 +1,17 @@
+.ReactVirtualized__Grid.ReactVirtualized__Table__Grid::-webkit-scrollbar-track
+{
+	background-color: rgb(30 31 31);
+}
+
+.ReactVirtualized__Grid.ReactVirtualized__Table__Grid::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.ReactVirtualized__Grid.ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: rgba(58, 79, 235,0.5);
+    height: 100px;
+}

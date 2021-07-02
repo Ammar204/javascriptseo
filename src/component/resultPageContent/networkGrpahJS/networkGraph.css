@@ -1,0 +1,32 @@
+svg circle.node {
+    fill: #eb947b;
+    stroke: #3372ab;
+    stroke-width: 0.5px;
+  }
+
+  svg line.link {
+    stroke: #3372ab;
+    stroke-opacity: 0.6;
+    stroke-width: 1px;
+  }
+
+  div.tooltip {
+    position: fixed;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    background: rgb(18,18,18);
+    color: whitesmoke;
+    width: min-content;
+    padding: 8px 12px;
+    box-shadow: 0px 3px 5px rgb(25 36 16 / 20%), 0px 1px 18px rgb(25 36 16 / 12%), 0px 6px 10px rgb(25 36 16 / 14%);
+  }
+
+  /* .network-graph{
+      display: flex;
+      justify-content: center;
+  } */
+
+  .graph-root{
+    position: relative;
+  }

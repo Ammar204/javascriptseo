@@ -1,10 +1,12 @@
 import React from 'react';
-import SearchPage from './pages/search/search'
+import ResultPage from './pages/resultPage/resultPage';
+// import SearchPage from './pages/search/search'
 
 function App() {
   return (
     <>
-      <SearchPage/>
+      {/* <SearchPage/> */}
+      <ResultPage/>
     </>
   );
 }

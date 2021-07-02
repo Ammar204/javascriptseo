@@ -3,32 +3,38 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import { store } from "./redux/store";
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: "dark",
     primary: {
       main: "#3a4feb",
     },
     secondary: {
       main: "#a863c0",
     },
-    background:{
+    background: {
       default: "#1e1f1f",
-      paper: "#151515"
-    }
+      paper: "#151515",
+    },
   },
 });
 
 ReactDOM.render(
+  <Provider store={store}>
+
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+  </React.StrictMode>
+  </Provider>
+,
   document.getElementById("root")
 );
 
