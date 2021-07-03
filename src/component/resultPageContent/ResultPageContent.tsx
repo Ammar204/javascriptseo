@@ -21,7 +21,7 @@ export default function ResultPageContent() {
         }}
         className={classes.root}
       >
-        <NetworkGraphJS />
+        <NetworkGraphJS csvRawData={csvRawData} />
       </Paper>
       <CsvTable />
     </div>
@@ -29,5 +29,5 @@ export default function ResultPageContent() {
 
   const renderInitState = () => <div>Ammar</div>;
 
-  return !csvRawData.length ? renderContent() : renderInitState();
+  return !!csvRawData.length ? renderContent() : renderInitState();
 }

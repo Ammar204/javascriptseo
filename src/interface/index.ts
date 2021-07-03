@@ -27,4 +27,9 @@ export interface navItem {
 }
 
 
+export interface generateNodeAndLink {
+  nodes: node[];
+  links: link[];
+}
+
 // export type nodes = Array<node>

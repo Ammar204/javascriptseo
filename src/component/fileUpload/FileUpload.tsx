@@ -5,6 +5,7 @@ import { readString } from "react-papaparse";
 import { link, node, rawData } from "../../interface";
 import { useAppDispatch } from "../../redux/hooks";
 import { UPDATE } from "../../redux/slice/csvRawDataSlice";
+import { FileUploadInput } from "./Input";
 
 export function FileUpload() {
   const classes = useStyles();
@@ -57,81 +58,82 @@ export function FileUpload() {
       //   Source: d.Source,
       // }))
       dispatch(UPDATE(combineFileData));
-      // let flags: string[] = [];
-      // let nodeId = 0;
-      // let sourceHash: Record<string, number> = {}; // out
-      // let destinationHash: Record<string, number> = {}; //in
-      // combineFileData.forEach((data, idx) => {
-      //   if (!flags.includes(data.Destination)) {
-      //     nodes.push({
-      //       id: nodeId++,
-      //       in: 0,
-      //       out: 0,
-      //       link: data.Destination,
-      //     });
-      //     flags.push(data.Destination);
-      //   }
+      let flags: string[] = [];
+      let nodeId = 0;
+      let sourceHash: Record<string, number> = {}; // out
+      let destinationHash: Record<string, number> = {}; //in
+      combineFileData.forEach((data, idx) => {
+        if (!flags.includes(data.Destination)) {
+          nodes.push({
+            id: nodeId++,
+            in: 0,
+            out: 0,
+            link: data.Destination,
+          });
+          flags.push(data.Destination);
+        }
 
-      //   if (!flags.includes(data.Source)) {
-      //     nodes.push({
-      //       id: nodeId++,
-      //       in: 0,
-      //       out: 0,
-      //       link: data.Source,
-      //     });
-      //     flags.push(data.Source);
-      //   }
+        if (!flags.includes(data.Source)) {
+          nodes.push({
+            id: nodeId++,
+            in: 0,
+            out: 0,
+            link: data.Source,
+          });
+          flags.push(data.Source);
+        }
 
-      //   if (!sourceHash[data.Source]) {
-      //     sourceHash[data.Source] = 1;
-      //   } else {
-      //     sourceHash[data.Source]++;
-      //   }
+        if (!sourceHash[data.Source]) {
+          sourceHash[data.Source] = 1;
+        } else {
+          sourceHash[data.Source]++;
+        }
 
-      //   if (!destinationHash[data.Destination]) {
-      //     destinationHash[data.Destination] = 1;
-      //   } else {
-      //     destinationHash[data.Destination]++;
-      //   }
-      // });
+        if (!destinationHash[data.Destination]) {
+          destinationHash[data.Destination] = 1;
+        } else {
+          destinationHash[data.Destination]++;
+        }
+      });
 
-      // nodes = nodes.map((node) => ({
-      //   id: node.id,
-      //   link: node.link,
-      //   in: (node.link && destinationHash[node.link]) || 0,
-      //   out: (node.link && sourceHash[node?.link]) || 0,
-      // }));
+      nodes = nodes.map((node) => ({
+        id: node.id,
+        link: node.link,
+        in: (node.link && destinationHash[node.link]) || 0,
+        out: (node.link && sourceHash[node?.link]) || 0,
+      }));
 
-      // combineFileData.forEach((data) => {
-      //   const sourceNode = nodes.find((node) => node.link === data.Source);
-      //   const destinationNode = nodes.find(
-      //     (node) => node.link === data.Destination
-      //   );
+      combineFileData.forEach((data) => {
+        const sourceNode = nodes.find((node) => node.link === data.Source);
+        const destinationNode = nodes.find(
+          (node) => node.link === data.Destination
+        );
 
-      //   links.push({ source: sourceNode?.id, target: destinationNode?.id });
-      // });
+        links.push({ source: sourceNode?.id, target: destinationNode?.id });
+      });
 
-      // console.log("promise", nodes, links);
-      // setFileName(tempFileName);
+      console.log("promise", nodes, links);
+      setFileName(tempFileName);
     });
   }
 
+
+
+
+  function setCsvRawData (rawData:rawData[] ) {
+    combineFileData = [...rawData]
+  }
+
+  function uploadHandler(){
+    console.log("combineData", combineFileData)
+    dispatch(UPDATE(combineFileData))
+  }
+
+
   return (
     <div className={classes.uploadContainer}>
-      <label htmlFor="btn-upload" className={classes.uploadInput}>
-        <input
-          id="btn-upload"
-          name="btn-upload"
-          style={{ display: "none" }}
-          type="file"
-          multiple
-          onChange={(evt) => readFiles(evt)}
-        />
-        <p className={classes.uploadBox}>
-          {fileName.length ? fileName.join(", ") : "Upload your csv file"}
-        </p>
-      </label>
-      <Button variant="contained" color="primary">
+      <FileUploadInput  setCsvRawData={setCsvRawData}/>
+      <Button variant="contained" color="primary" onClick={uploadHandler} >
         Upload File
       </Button>
     </div>

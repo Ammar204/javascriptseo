@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     uploadBox: {
       background: theme.palette.background.default,
-      padding: "5px",
       fontSize: "14px",
       height: "auto",
       borderRadius: 2,
@@ -19,6 +18,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       wordBreak: "break-word",
       minWidth: 100,
       maxWidth: 150,
+      padding: "5px 10px"
     },
     uploadInput: {
       flexGrow: 1,
