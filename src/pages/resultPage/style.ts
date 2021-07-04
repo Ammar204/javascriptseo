@@ -42,7 +42,8 @@ createStyles({
     flexGrow: 1,
     padding: theme.spacing(3),
     backgroundColor: theme.palette.background.paper,
-    minHeight: "100vh"
+    minHeight: "100vh",
+    overflowX: "hidden"
   },
   drawerIcon: {
       padding:"20px 0px",

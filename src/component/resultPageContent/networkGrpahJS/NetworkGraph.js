@@ -41,8 +41,6 @@ export function NetworkGraphJS({ csvRawData }) {
     let w = window.innerWidth;
     let h = window.innerHeight;
 
-    const nodeColor = d3.rgb("#e4a45b"),
-      fill = [nodeColor.darker(), nodeColor.brighter()];
 
     let focus_node = null,
       highlight_node = null;

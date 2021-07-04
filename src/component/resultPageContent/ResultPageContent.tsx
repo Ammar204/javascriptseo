@@ -1,10 +1,8 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
 import { NetworkGraphJS } from "./networkGrpahJS/NetworkGraph";
-import CsvTable from "./csvTable/csvTable";
 import { useStyles } from "./style";
 import { Paper, useTheme } from "@material-ui/core";
 import { useAppSelector } from "../../redux/hooks";
+import DataGridDemo from "./csvTable/dataGrid";
 export default function ResultPageContent() {
   const classes = useStyles();
   const theme = useTheme();
@@ -23,11 +21,11 @@ export default function ResultPageContent() {
       >
         <NetworkGraphJS csvRawData={csvRawData} />
       </Paper>
-      <CsvTable />
+      <DataGridDemo  csvRawData={csvRawData} />
     </div>
   );
 
-  const renderInitState = () => <div>Ammar</div>;
+  const renderInitState = () => <div></div>;
 
   return !!csvRawData.length ? renderContent() : renderInitState();
 }

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Button } from "@material-ui/core";
+import { useState } from "react";
 import { useStyles } from "./style";
-import { readString } from "react-papaparse";
-import { link, node, rawData } from "../../interface";
-import { useAppDispatch } from "../../redux/hooks";
-import { UPDATE } from "../../redux/slice/csvRawDataSlice";
+import { rawData } from "../../interface";
 import { isAllFileCSV, readFile } from "../../helper/readFileHelper";
+import SimpleSnackbar from "../snackbar/Snackbar";
 
 interface Props {
   setCsvRawData: (rawData: rawData[]) => void;
@@ -16,12 +13,15 @@ export function FileUploadInput(props: Props) {
   const classes = useStyles();
 
   const [fileName, setFileName] = useState<string[]>([]);
+  const [hasError, setError] = useState<boolean>(false);
 
   async function changeHandler(evt: any) {
     const { files } = evt.target;
     const isFilesValid = isAllFileCSV(files);
     if (!isFilesValid) {
-      return false;
+      setError(true)
+      setTimeout(() => setError(false), 2000)
+      return;
     }
     let tempFileName: string[] = [];
     let readFilePromises: Promise<any[]>[] = [];
@@ -33,7 +33,9 @@ export function FileUploadInput(props: Props) {
     setCsvRawData(rawDataArray.flat());
     setFileName(tempFileName);
   }
+
   return (
+    <>
     <label htmlFor="btn-upload" className={classes.uploadInput}>
       <input
         id="btn-upload"
@@ -43,9 +45,13 @@ export function FileUploadInput(props: Props) {
         multiple
         onChange={(evt) => changeHandler(evt)}
       />
-      <p className={classes.uploadBox}>
+      <p className={ hasError ?  classes.uploadBoxWithError : classes.uploadBox}>
         {fileName.length ? fileName.join(", ") : "Upload your csv file"}
       </p>
     </label>
+
+
+    <SimpleSnackbar message="File(s) extension is incorrect" open={hasError} />
+    </>
   );
 }

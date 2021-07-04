@@ -18,13 +18,25 @@ export const useStyles = makeStyles((theme: Theme) =>
       wordBreak: "break-word",
       minWidth: 100,
       maxWidth: 150,
-      padding: "5px 10px"
+      padding: "5px 10px",
     },
     uploadInput: {
       flexGrow: 1,
       maxWidth: "300px",
       marginRight: "15px",
       cursor: "pointer",
+    },
+    uploadBoxWithError: {
+      background: theme.palette.background.default,
+      fontSize: "14px",
+      height: "auto",
+      borderRadius: 2,
+      position: "relative",
+      wordBreak: "break-word",
+      minWidth: 100,
+      maxWidth: 150,
+      padding: "5px 10px",
+      border: `1px solid ${theme.palette.error.light}`
     },
   })
 );
