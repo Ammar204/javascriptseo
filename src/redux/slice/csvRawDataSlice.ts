@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { rawData } from "../../interface";
+import data from "../../data/data.json";
 
 // Define the initial state using that type
-const initialState: rawData[] = [];
+const initialState: rawData[] = data;
 
 export const csvRawDataSlice = createSlice({
   name: "csvRawData",
