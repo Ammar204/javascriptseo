@@ -8,6 +8,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "center",
       alignItems: "center",
       position: "relative",
+      '@media(maxWidth: 500px)' : {
+        flexDirection: "column",
+
+      }
     },
     uploadBox: {
       background: theme.palette.background.default,

@@ -17,14 +17,12 @@ import {
 import { useStyles } from "./style";
 import { navItem } from "../../interface";
 import BubbleChart from "@material-ui/icons/BubbleChart";
+import LiveHelp from "@material-ui/icons/LiveHelp";
 import ResultPageContent from "../../component/resultPageContent/ResultPageContent";
 import ToolbarContent from "../../component/ToolbarContent/ToolbarContent";
-
+import logo from './logo.png'; // Tell webpack this JS file uses this image
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
 
@@ -36,20 +34,20 @@ export default function ResultPage(props: Props) {
 
   const navItems: navItem[] = [
     {
-      name: "About",
+      name: "Crawlviz",
       icon: <BubbleChart />,
     },
     {
-      name: "About1",
+      name: "Get Started",
       icon: <InboxIcon />,
     },
     {
-      name: "About2",
-      icon: <InboxIcon />,
+      name: "FAQ",
+      icon: <LiveHelp />,
     },
     {
-      name: "About3",
-      icon: <InboxIcon />,
+      name: "Contact",
+      icon: <ContactSupportIcon />,
     },
   ];
 
@@ -60,7 +58,9 @@ export default function ResultPage(props: Props) {
   const drawer = (
     <div>
         <div className={classes.drawerIcon}> 
-        <BubbleChart fontSize="large"/>
+        <img src={logo} alt="Logo" className={classes.logo} />
+
+        {/* <BubbleChart fontSize="large"/> */}
         </div>
       <List>
         {navItems.map((item, index) => (

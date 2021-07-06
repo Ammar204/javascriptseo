@@ -29,4 +29,6 @@ svg circle.node {
 
   .graph-root{
     position: relative;
+    width: 100%;
+    overflow: hidden;
   }

@@ -32,14 +32,9 @@ export function NetworkGraphJS({ csvRawData }) {
 
 
 
-    console.log('nodes', nodes)
-    console.log('links', links)
-
-
-
 
     let w = window.innerWidth;
-    let h = window.innerHeight;
+    let h = 400;
 
 
     let focus_node = null,
@@ -279,10 +274,8 @@ export function NetworkGraphJS({ csvRawData }) {
 
     function resize() {
       const width =
-          window.innerWidth !== 600
-            ? window.innerWidth - 300
-            : window.innerWidth,
-        height = window.innerHeight;
+          window.innerWidth ,
+        height = 400;
       svg.attr("width", width).attr("height", height);
 
       force
