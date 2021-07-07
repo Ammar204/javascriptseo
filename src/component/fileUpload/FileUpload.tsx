@@ -22,7 +22,7 @@ export function FileUpload() {
   return (
     <div className={classes.uploadContainer}>
       <FileUploadInput setCsvRawData={setCsvRawData} />
-      <Button variant="contained" color="primary" onClick={uploadHandler}>
+      <Button variant="contained" className={classes.btn} color="primary" onClick={uploadHandler}>
         Upload File
       </Button>
     </div>

@@ -7,9 +7,13 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+    // @media screen and (max-width: 500px) {
+    //     padding-right:24px ;
+    // }
     .heading{
         @media screen and (max-width: 500px) {
-            display: none;
+            // display: none;
+            font-size: 14px;
         }
     }
 }

@@ -20,7 +20,7 @@ import BubbleChart from "@material-ui/icons/BubbleChart";
 import LiveHelp from "@material-ui/icons/LiveHelp";
 import ResultPageContent from "../../component/resultPageContent/ResultPageContent";
 import ToolbarContent from "../../component/ToolbarContent/ToolbarContent";
-import logo from './logo.png'; // Tell webpack this JS file uses this image
+import logo from './icononly.png'
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 interface Props {
   window?: () => Window;
