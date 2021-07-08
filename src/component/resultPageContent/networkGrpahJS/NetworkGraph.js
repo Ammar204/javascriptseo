@@ -129,9 +129,16 @@ export function NetworkGraphJS({ csvRawData }) {
       // }); label
     const div = d3.select("div.tooltip");
 
+
+    let clearTooltip;
+
+
     node
-      .on("mouseover", function (d) {
+      .on("mouseenter", function (d) {
+        console.log("mouse enter")
+        clearTooltip && clearTimeout(clearTooltip)
         set_highlight(d);
+
 
         div
           .style("visibility", "visible")
@@ -151,8 +158,15 @@ export function NetworkGraphJS({ csvRawData }) {
         if (highlight_node === null) set_highlight(d);
       })
       .on("mouseout", function (d) {
-        div.transition().duration(500).style("visibility", "hidden");
-        exit_highlight();
+        console.log("mouse out")
+
+
+        clearTooltip = setTimeout(() => {
+          div.style("visibility", "hidden");
+          exit_highlight();
+        }, 200);
+
+        
       });
 
     d3.select(window).on("mouseup", function () {
