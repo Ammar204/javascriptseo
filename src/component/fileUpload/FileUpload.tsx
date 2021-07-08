@@ -12,7 +12,7 @@ export function FileUpload() {
 
   function setCsvRawData(rawData: rawData[]) {
     combineFileData = [...rawData];
-    combineFileData = combineFileData.filter((d) => d.Type === "Hyperlink");
+    // combineFileData = combineFileData.filter((d) => d.Type === "Hyperlink");
   }
 
   function uploadHandler() {
